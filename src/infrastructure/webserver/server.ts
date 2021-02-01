@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import { startConnectDB } from '../orm/config-db';
 import { configServer, ConfigServer, ServiceDb } from './server-service';
+import { routesLocations } from '../../interfaces/routes/location-route';
 
 interface IStartApp {
     appExpress: express.Express;
@@ -35,6 +36,9 @@ app.use(compression());
 // Enable cors
 app.use(cors());
 app.options('*', cors());
+
+// Manejo de las rutas
+routesLocations(app); 
 
 const startApp = (args: IStartApp) => async () => {
     const { appExpress, connectionDb, config } = args;
