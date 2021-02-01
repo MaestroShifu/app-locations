@@ -9,7 +9,6 @@
 - Para correr en desarrollo: ```yarn start:dev```
 - Para correr en modo debug: ```yarn start:debug```
 - Crear transpilado de ts a js: ```yarn build```
-- Para revisar sintaxis del codigo: ```yarn tslint```
 - Sirve para correr los test: ```yarn test```
 - Sirve para ejecutar la migraciones: ```yarn migration:up```
 - Sirve para crear migraciones: ```yarn migration:create```
@@ -22,7 +21,18 @@
 - Sirve para estar pendiente a cambios en los test: ```yarn test:watch```
 - Sirve para hacer debug de los test: ```yarn test:debug```
 
-## Manejar tslint VScode
-- Menu de comandos: ```Ctrl + Shift + P```
-- Seleccionamos la siguiente opcion: ```TSLint: Manage workspace library execution```
-- En el siguiente menu seleccionamos la opcion: ```enable workspace library execution```
+## Como correr el proyecto
+- Creamos una red en docker: ```docker network create dev_network```
+- Nos vamos a la carpeta postgres_db y corremos: ```docker-compose up -d```
+- Las credenciales para conectarse a nuestra db son:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: root
+    POSTGRES_PORT: 5432
+    POSTGRES_DB: location_db
+- Instalamos las dependencias del proyecto ```yarn install```
+- Corremos las migracion: ```yarn migration:up```
+- Si vamos a correr la app en modo desarrollo: ```yarn start:dev```
+- Si vamos correr la app en produccion:
+    1. ```yarn build```
+    2. Cambiar nuestra variable de entorno a ```prod```
+    3. Corremos por ultimo: ```yarn start```
